@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using EnvDTE80;
 using System.Linq;
 using EnvDTE;
+using System.Windows.Forms;
+using System.IO;
 
 namespace FileDiffer
 {
@@ -112,6 +114,15 @@ namespace FileDiffer
 
             file1 = items.ElementAtOrDefault(0);
             file2 = items.ElementAtOrDefault(1);
+
+            if (items.Count() == 1)
+            {
+                var dialog = new OpenFileDialog();
+                dialog.InitialDirectory = Path.GetDirectoryName(file1);
+                dialog.ShowDialog();
+
+                file2 = dialog.FileName;
+            }
 
             return !string.IsNullOrEmpty(file1) && !string.IsNullOrEmpty(file2);
         }
