@@ -107,6 +107,7 @@ namespace FileDiffer
             {
                 dte.ExecuteCommand("Tools.DiffFiles", $"\"{file1}\" \"{file2}\"");
             }
+            //comment
         }
         public static bool CanFilesBeCompared(DTE2 dte, out string file1, out string file2)
         {
